@@ -13,12 +13,6 @@ import lombok.NonNull;
 public class Graph
 {
 	private static final HashMap<Edge, Double> pastDistanceCalculations = new HashMap<>();
-	private static final HashMap<Cell, Double> pastFurthestCalculations = new HashMap<>();
-
-	public static void resetCache(){
-		pastDistanceCalculations.clear();
-		pastFurthestCalculations.clear();
-	}
 
 	public static double getDistanceBetween(@NonNull Cell from, @NonNull Cell to){
 		Objects.requireNonNull(from);
@@ -33,30 +27,6 @@ public class Graph
 		pastDistanceCalculations.put(Edge.builder().from(to).to(from).build(), distance);
 
 		return distance;
-	}
-
-	public static double getFurthestAway(@NonNull Set<RegisteredCell> cells, @NonNull Cell from){
-		Objects.requireNonNull(from);
-		Objects.requireNonNull(cells);
-
-		return pastFurthestCalculations.computeIfAbsent(from, cell -> {
-			double furthestDistance = -1;
-
-			for (RegisteredCell neighbour : cells) {
-				if(!neighbour.getCell().equals(cell)){
-					double distance = getDistanceBetween(neighbour.getCell(), cell);
-					if(furthestDistance < distance){
-						furthestDistance = distance;
-					}
-				}
-			}
-
-			if (furthestDistance == -1){
-				throw new IllegalStateException("Calculation error");
-			}
-
-			return furthestDistance;
-		});
 	}
 
 	public static double getFurthestAwayWithSameFrequency(@NonNull Set<RegisteredCell> cells, @NonNull RegisteredCell from){

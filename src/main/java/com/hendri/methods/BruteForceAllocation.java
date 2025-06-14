@@ -1,4 +1,4 @@
-package com.hendri;
+package com.hendri.methods;
 
 import java.util.Objects;
 import java.util.Set;
@@ -6,7 +6,6 @@ import java.util.Set;
 import com.hendri.models.Cell;
 import com.hendri.models.QualityMeasure;
 import com.hendri.models.RegisteredCell;
-import com.hendri.utils.Graph;
 import com.hendri.utils.Permutations;
 import static com.hendri.utils.Graph.getGraphQualityMeasure;
 
@@ -14,7 +13,6 @@ public class BruteForceAllocation
 {
 
 	public static Set<RegisteredCell> bruteForceAllocate(Set<Cell> cells, Set<Integer> frequencies){
-		Graph.resetCache();
 		// get all permutations
 		Set<Set<RegisteredCell>> permutations = Permutations.getPermutations(cells, frequencies);
 
@@ -29,7 +27,5 @@ public class BruteForceAllocation
 
 		return Objects.requireNonNull(best).getRegistrations();
 	}
-
-
 	
 }

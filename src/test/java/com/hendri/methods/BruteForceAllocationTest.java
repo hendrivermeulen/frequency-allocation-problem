@@ -1,4 +1,4 @@
-package com.hendri;
+package com.hendri.methods;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -24,14 +24,15 @@ class BruteForceAllocationTest
 		Set<Cell> testData = Set.of(A, B, C);
 		Set<RegisteredCell> actual = BruteForceAllocation.bruteForceAllocate(testData, FREQUENCIES);
 
-		Set<RegisteredCell> expected = Set.of(
-				RegisteredCell.builder().cell(A).frequency(110).build(),
-				RegisteredCell.builder().cell(B).frequency(111).build(),
-				RegisteredCell.builder().cell(C).frequency(112).build()
-		);
+		Iterator<RegisteredCell> iterator = actual.iterator();
+		RegisteredCell first = iterator.next();
+		RegisteredCell second = iterator.next();
+		RegisteredCell third = iterator.next();
 
-		assertEquals(testData.size(), actual.size());
-		assertEquals(expected, actual);
+		assertEquals(100, Graph.getGraphQualityMeasure(actual).getQuality());
+		assertNotEquals(first.getFrequency(), second.getFrequency());
+		assertNotEquals(first.getFrequency(), third.getFrequency());
+		assertNotEquals(second.getFrequency(), third.getFrequency());
 	}
 
 	@Test
@@ -50,7 +51,7 @@ class BruteForceAllocationTest
 	}
 
 	@Test
-	void getGraphQualityMeasureSameSite(){
+	void bruteForceSameSite(){
 		Cell cellA = Cell.builder().id("A").lat(0.0).lon(0.0).north(0).east(0).build();
 		Cell cellB = Cell.builder().id("B").lat(0.0).lon(0.0).north(0).east(0).build();
 		Cell cellC = Cell.builder().id("C").lat(0.0).lon(0.0).north(0).east(0).build();
@@ -74,7 +75,7 @@ class BruteForceAllocationTest
 	}
 
 	@Test
-	void getGraphQualityMeasure(){
+	void bruteForcePredictiveInterference(){
 		Cell cellA = Cell.builder().id("A").lat(0.0).lon(0.0).north(0).east(0).build();
 		Cell cellB = Cell.builder().id("B").lat(0.0).lon(0.0).north(0).east(0).build();
 		Cell cellC = Cell.builder().id("C").lat(0.0).lon(0.0).north(0).east(0).build();
@@ -82,6 +83,20 @@ class BruteForceAllocationTest
 
 		Set<RegisteredCell> actual = BruteForceAllocation.bruteForceAllocate(
 				Set.of(cellA, cellB, cellC, cellD), FREQUENCIES);
+
+		assertEquals(100, Graph.getGraphQualityMeasure(actual).getQuality());
+	}
+
+	@Test
+	void bruteForceDualInterference(){
+		Cell cellA = Cell.builder().id("A").lat(0.0).lon(0.0).north(0).east(0).build();
+		Cell cellB = Cell.builder().id("B").lat(0.0).lon(0.0).north(0).east(0).build();
+		Cell cellC = Cell.builder().id("C").lat(0.0).lon(0.0).north(0).east(0).build();
+		Cell cellD = Cell.builder().id("D").lat(0.0).lon(0.0).north(100).east(100).build();
+		Cell cellE = Cell.builder().id("E").lat(0.0).lon(0.0).north(100).east(100).build();
+
+		Set<RegisteredCell> actual = BruteForceAllocation.bruteForceAllocate(
+				Set.of(cellA, cellB, cellC, cellD, cellE), FREQUENCIES);
 
 		assertEquals(100, Graph.getGraphQualityMeasure(actual).getQuality());
 	}

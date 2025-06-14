@@ -10,11 +10,8 @@ import static com.hendri.utils.TestData.B;
 import static com.hendri.utils.TestData.C;
 import static com.hendri.utils.TestData.DISTANCE_BETWEEN_A_AND_B;
 import static com.hendri.utils.TestData.DISTANCE_BETWEEN_A_AND_C;
-import static com.hendri.utils.TestData.DISTANCE_BETWEEN_A_AND_Z;
 import static com.hendri.utils.TestData.Z;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GraphTest
 {
@@ -34,18 +31,6 @@ class GraphTest
 	void getDistanceBetween() {
 		assertEquals(DISTANCE_BETWEEN_A_AND_B, Math.round(Graph.getDistanceBetween(A, B)));
 		assertEquals(DISTANCE_BETWEEN_A_AND_C, Math.round(Graph.getDistanceBetween(A, C)));
-	}
-
-	@Test
-	void getFurthestAway() {
-		assertEquals(DISTANCE_BETWEEN_A_AND_B,Math.round(Graph.getFurthestAway(
-				Set.of(REGISTERED_A, REGISTERED_B, REGISTERED_C), A)));
-		// cached
-		assertEquals(DISTANCE_BETWEEN_A_AND_B, Math.round(Graph.getFurthestAway(
-				Set.of(REGISTERED_A, REGISTERED_B, REGISTERED_C, REGISTERED_Z_SAME_FREQ), A)));
-		Graph.resetCache();
-		assertEquals(DISTANCE_BETWEEN_A_AND_Z, Math.round(Graph.getFurthestAway(
-				Set.of(REGISTERED_A, REGISTERED_B, REGISTERED_C, REGISTERED_Z_SAME_FREQ), A)));
 	}
 
 	@Test
