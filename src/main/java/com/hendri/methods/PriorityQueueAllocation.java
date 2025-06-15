@@ -53,10 +53,12 @@ public class PriorityQueueAllocation
 			HashMap<Cell, Integer> allocations, Set<Integer> freqAllocations){
 		int furthestAwayFreq = -1;
 		double furthestAwayFreqDistance = -1;
+		int amountOfEmptyNeighboursVisited = 0;
 		Set<Integer> leftoverAllocations = new HashSet<>(freqAllocations);
 
 		if(allocations.values().size() >= freqAllocations.size()) {
-			while (!cellPriorities.isEmpty() && !leftoverAllocations.isEmpty()) {
+			while (!cellPriorities.isEmpty() && !leftoverAllocations.isEmpty()
+					&& amountOfEmptyNeighboursVisited < freqAllocations.size()) {
 				Edge edge = cellPriorities.poll();
 				Cell neighbour = (edge.getFrom().equals(cell)) ? edge.getTo() : edge.getFrom();
 				if (allocations.containsKey(neighbour)) {
@@ -67,6 +69,8 @@ public class PriorityQueueAllocation
 						furthestAwayFreq = freqAllocation;
 						furthestAwayFreqDistance = distanceBetween;
 					}
+				} else {
+					amountOfEmptyNeighboursVisited++;
 				}
 			}
 		} else {
