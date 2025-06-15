@@ -14,7 +14,7 @@ methods, examples Greedy, Random Greedy, Largest Degree First, Smallest Degree F
 and Reinforcement Learning (Pasham, 2023)[^4]; Distributed Algorithms (Pasham, 2023)[^4]; 
 and others like Brown Graph Coloring (Michail et al.,2020)[^5].
 
-Pasham (2023 [^4]) has shown that distributed algorithms have the least time complexity, followed by
+Pasham (2023)[^4] has shown that distributed algorithms have the least time complexity, followed by
 Heuristic-Based and AI being the worst.
 
 ## Introduction
