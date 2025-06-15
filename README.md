@@ -11,8 +11,8 @@ Priority Queue Algorithm with complexity of ~O(n^2), where N is the number of ve
 There are different techniques to solving the coloring problem with solutions using Heuristic-Based
 methods, examples Greedy, Random Greedy, Largest Degree First, Smallest Degree First, Saturation Degree
 (Pasham, 2023 [^4]; Michail et al., 2020 [^5]); AI Driven, examples like Genetic Algorithms, Neural Networks,
-and Reinforcement Learning (Pasham, 2023 [^4]); Distributed Algorithms (Pasham, 2023 [^4]); 
-and others like Brown Graph Coloring (Michail et al.,2020 [^5]).
+and Reinforcement Learning (Pasham, 2023)[^4]; Distributed Algorithms (Pasham, 2023)[^4]; 
+and others like Brown Graph Coloring (Michail et al.,2020)[^5].
 
 Pasham (2023 [^4]) has shown that distributed algorithms have the least time complexity, followed by
 Heuristic-Based and AI being the worst.
@@ -46,7 +46,7 @@ each edge (O(n^2)) and at most look at k neighbours with frequencies or k neighb
 This will not always lead the most optimal solution but will be even faster and close to 
 the most optimal solution.
 
-This algorithm is similar to the DSatur algorithm (Michail et al.,2020 [^5]) which uses saturation 
+This algorithm is similar to the DSatur algorithm (Michail et al.,2020)[^5] which uses saturation 
 instead of priority queues and kth nearest neighbour to optimize to the time complexity.
 
 ## Test Methodology
@@ -78,14 +78,14 @@ the Priority Queue algorithm is shown to be a better choice over the Greedy algo
 problem is still bounded by calculating all the edges of each vertex bounding the complexity to O(n^2).
 
 ## Future Work
-1. The Priority Queue can be optimized to give better results by using Backtracking, as done by Bhowmick & Hovland (2008
-[^6]), to swap assignments around to give more optimal results, but this might lead to more time complexity. 
+1. The Priority Queue can be optimized to give better results by using Backtracking, as done by Bhowmick & Hovland (2008)[^6],
+to swap assignments around to give more optimal results, but this might lead to more time complexity. 
 It can also be investigated to not use priority queues but to only start at the smallest edge and grow walk from 
 their using the smallest edge from the last colored vertex to reduce to only O(n^2) complexity.
 
 2. Add a visualization of the algorithm at work to show how it makes choices.
 3. Conduct a systematic literature review of latest work on k-coloring to see if there has been further 
-   advances like work done by Crites (2024[^7])
+   advances like work done by Crites (2024)[^7]
 
 
 ## References
