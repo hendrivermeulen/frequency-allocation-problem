@@ -107,5 +107,4 @@ The Metascience. 1(1):122–148.](https://yuktabpublisher.com/index.php/TMS/arti
 [^6]: [Bhowmick, S. & Hovland, P.D. 2008. Improving the Performance of Graph Coloring Algorithms through Backtracking. 
 In Computational Science – ICCS 2008. M. Bubak, G.D. van Albada, J. Dongarra, & P.M.A. Sloot, Eds. Berlin, Heidelberg: Springer. 873–882. DOI: 10.1007/978-3-540-69384-0_92.](https://link.springer.com/chapter/10.1007/978-3-540-69384-0_92)
 
-[^7]: [Crites, B. 2024. C++ Graph Coloring Package. Available: https://github.com/brrcrites/graph-coloring]
-(https://github.com/brrcrites/graph-coloring)
+[^7]: [Crites, B. 2024. C++ Graph Coloring Package. Available: https://github.com/brrcrites/graph-coloring](https://github.com/brrcrites/graph-coloring)
