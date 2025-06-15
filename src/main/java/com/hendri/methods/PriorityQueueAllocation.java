@@ -1,3 +1,4 @@
+/* © Copyright Hendrik Jacobus Vermeulen 2025, all rights reserved */
 package com.hendri.methods;
 
 import java.util.Comparator;
@@ -54,7 +55,7 @@ public class PriorityQueueAllocation
 		double furthestAwayFreqDistance = -1;
 		Set<Integer> leftoverAllocations = new HashSet<>(freqAllocations);
 
-		if(allocations.values().size() > freqAllocations.size()) {
+		if(allocations.values().size() >= freqAllocations.size()) {
 			while (!cellPriorities.isEmpty() && !leftoverAllocations.isEmpty()) {
 				Edge edge = cellPriorities.poll();
 				Cell neighbour = (edge.getFrom().equals(cell)) ? edge.getTo() : edge.getFrom();
@@ -75,6 +76,9 @@ public class PriorityQueueAllocation
 		}
 
 		if(leftoverAllocations.isEmpty()){
+			if(furthestAwayFreq == -1){
+				throw new IllegalStateException("Could not allocate frequency");
+			}
 			return furthestAwayFreq;
 		}
 		return leftoverAllocations.stream().findFirst().get();

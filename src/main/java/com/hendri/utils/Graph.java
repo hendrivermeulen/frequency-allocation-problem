@@ -1,3 +1,4 @@
+/* © Copyright Hendrik Jacobus Vermeulen 2025, all rights reserved */
 package com.hendri.utils;
 
 import java.util.HashMap;

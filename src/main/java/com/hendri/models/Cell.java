@@ -1,3 +1,4 @@
+/* © Copyright Hendrik Jacobus Vermeulen 2025, all rights reserved */
 package com.hendri.models;
 
 import lombok.Builder;

@@ -1,9 +1,9 @@
+/* © Copyright Hendrik Jacobus Vermeulen 2025, all rights reserved */
 package com.hendri.models;
 
 import java.util.Objects;
 
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 
