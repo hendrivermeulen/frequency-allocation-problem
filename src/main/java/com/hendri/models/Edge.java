@@ -7,6 +7,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 
+/**
+ * Models a edge between cells
+ * @author Hendrik Vermeulen
+ */
 @Builder
 @Getter
 public class Edge

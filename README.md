@@ -21,15 +21,15 @@ Heuristic-Based and AI being the worst.
 ### Brute Force
 To get the optimal solution we can use a BruteForce method by working out all the permutations and taking the 
 best of those permutations. This is an easy and straight forward method to always provided you with the most 
-optimal solution, however is of O(n!) complexity due to the looking through all the permutations for 
+optimal solution, however is of O(n!n^2) complexity due to the looking through all the permutations for 
 the best result.
 
 ### Greedy Heuristic Algorithm
 The BruteForce method can be reduced in complexity by only taking the best solution at the given time,
 which is a greedy heuristic approach, however you still need to evaluate against all other vertices using
 their edges and each vertex is connected to the other bounding this implementation to at least O(n^2) but the 
-calculation to determine the quality is also O(n^2) making this a O(n^4) complexity algorithm. This will not always
-lead the most optimal solution but will be a lot faster and close to the most optimal solution.
+calculation to determine the quality is also O(n^2) making this a O(n^3k) complexity algorithm. 
+This will not always lead the most optimal solution but will be a lot faster and close to the most optimal solution.
 
 ### Priority Queue Algorithm
 To further improve the [Greedy Heuristic Algorithm](#greedy-heuristic-algorithm) the use of priority queues
@@ -39,12 +39,14 @@ prioritizing that close neighbours have different frequencies, and if all freque
 take the frequency of the furthest neighbour from the set of closest neighbours - prioritizing same frequencies 
 should be as far apart as possible. This will also be limited to only look at the k closest neighbours with 
 frequencies and without frequencies to avoid looking at the entire graph and only look at the k nearest which can 
-mak conflicts. The complexity is reduced by the use of priority queues to O(n^2logn + n^2\*2k) 
+mak conflicts. 
+
+The complexity is reduced by the use of priority queues to O(n^2logn + n^2logn\*2k) 
 but is still bounded by O(n^2logn) to calculate the edges of the graph and add them 
-to a queue (preprocessing), but the coloring only takes O(n^2\*2k) which is to go through 
-each edge (O(n^2)) and at most look at k neighbours with frequencies or k neighbours without frequencies. 
-This will not always lead the most optimal solution but will be even faster and close to 
-the most optimal solution.
+to a queue (preprocessing), but the coloring only takes O(n^2logn\*2k) which is to go through 
+each edge (O(n^2)) and at most look at k closet neighbours, logn to get k closets neighbours from priority queue,
+with frequencies or k neighbours without frequencies. This will not always lead the most optimal solution 
+but will be even faster and close to the most optimal solution.
 
 This algorithm is similar to the DSatur algorithm (Michail et al.,2020)[^5] which uses saturation 
 instead of priority queues and kth nearest neighbour to optimize to the time complexity.

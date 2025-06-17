@@ -7,6 +7,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 
+/**
+ * Models the quality of a registration set
+ * @author Hendrik Vermeulen
+ */
 @Builder
 @Getter
 public class QualityMeasure
