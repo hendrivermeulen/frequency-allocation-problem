@@ -13,7 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import com.hendri.methods.GreedyAllocation;
-import com.hendri.methods.PriorityAllocation;
 import com.hendri.methods.PriorityQueueAllocation;
 import com.hendri.models.Cell;
 import com.hendri.models.RegisteredCell;
@@ -38,7 +37,7 @@ public class Main
 	 * Frequency allocation start
 	 */
 	public static final int FREQ_ALLOC_START = 110;
-	public static final int NUM_TESTS = 10;
+	public static final int NUM_TESTS = 100;
 
 	/**
 	 * Get list of Frequency allocations
@@ -172,9 +171,9 @@ public class Main
 				System.out.println("Running Greedy...");
 				long average = 0;
 				for (int i = 0; i < NUM_TESTS; i++) {
-					startTime = System.currentTimeMillis();
+					startTime = System.nanoTime();
 					registeredCells = GreedyAllocation.greedilyAllocate(cells, freqAllocations);
-					endTime = System.currentTimeMillis();
+					endTime = System.nanoTime();
 					average += endTime-startTime;
 				}
 				System.out.println("Greedy quality: " + Graph.getGraphQualityMeasure(registeredCells).getQuality());
@@ -184,10 +183,10 @@ public class Main
 				average = 0;
 				System.out.println("Running Priority Queue...");
 				for (int i = 0; i < NUM_TESTS; i++) {
-					startTime = System.currentTimeMillis();
+					startTime = System.nanoTime();
 					registeredCells = PriorityQueueAllocation.priorityAllocate(cells,
 							freqAllocations);
-					endTime = System.currentTimeMillis();
+					endTime = System.nanoTime();
 						average += endTime-startTime;
 				}
 				System.out.println("Priority Queue quality: " + Graph.getGraphQualityMeasure(registeredCells).getQuality());

@@ -57,7 +57,7 @@ public class PriorityQueueAllocation
 			allCellPriorities.put(cell, cellPriorities);
 		}
 
-		// perform greedy allocation
+		// perform priority allocation
 		HashMap<Cell, Integer> allocations = new HashMap<>();
 		while (allocations.size() != cells.size()){
 			Edge edge = Objects.requireNonNull(edgePriorities.poll());
