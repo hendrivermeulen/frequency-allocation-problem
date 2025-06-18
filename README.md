@@ -65,7 +65,7 @@ the quality of each algorithm.
 ## Results
 The following results where gathered:
 - The BruteForce algorithm took too long to process and no time was taken.
-- The Greedy algorithm took on average 3ms to process and a quality of 98.05%.
+- The Greedy algorithm took on average 2ms to process and a quality of 98.05%.
 - The Priority Queue algorithm took on average 1ms to process and a quality of 98.32%.
 
 ## Discussion
