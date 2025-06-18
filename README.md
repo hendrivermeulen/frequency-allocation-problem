@@ -66,18 +66,19 @@ the quality of each algorithm.
 The following results where gathered:
 - The BruteForce algorithm took too long to process and no time was taken.
 - The Greedy algorithm took on average 3ms to process and a quality of 98.05%.
-- The Priority Queue algorithm took on average 5ms to process and a quality of 98.32%.
+- The Priority Queue algorithm took on average 1ms to process and a quality of 98.32%.
 
 ## Discussion
 The BruteForce algorithm with its complexity of O(n!) took too long to process showing that it is largely more
 expensive to compute. However, the greedy algorithm shown to be quick and accurate enough even though
-it will not give the most optimal answer. The Priority Queue algorithm is shown to be almost as quick and 
+it will not give the most optimal answer. The Priority Queue algorithm is shown to be quicker and 
 provides even slightly better quality. 
 
 ## Conclusion
 The BruteForce algorithm shown to be impractical and not viable to get the most optimal solution. However,
-the Priority Queue algorithm is shown to be a better quality over the Greedy algorithm. Ultimately the 
-problem is still bounded by calculating all the edges of each vertex bounding the complexity to O(n^2).
+the Priority Queue algorithm is shown to be a better quality and speed over the Greedy algorithm, 
+with the given data set. Ultimately the problem is still bounded by calculating all the 
+edges of each vertex bounding the complexity to O(n^2).
 
 ## Future Work
 1. The Priority Queue can be optimized to give better results by using Backtracking, as done by Bhowmick & Hovland (2008)[^6],
