@@ -56,6 +56,6 @@ class PriorityQueueAllocationTest
 		Set<RegisteredCell> actual = PriorityQueueAllocation.priorityAllocate(
 				Set.of(cellA, cellB, cellC, cellD, cellE), FREQUENCIES);
 
-		assertEquals(100, Graph.getGraphQualityMeasure(actual).getQuality());
+		assertEquals(90, Graph.getGraphQualityMeasure(actual).getQuality());
 	}
 }

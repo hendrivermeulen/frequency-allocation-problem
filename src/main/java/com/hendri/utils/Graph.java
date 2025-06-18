@@ -22,6 +22,10 @@ public class Graph
 	 */
 	private static final HashMap<Edge, Double> pastDistanceCalculations = new HashMap<>();
 
+	public static void clearCache(){
+		pastDistanceCalculations.clear();
+	}
+
 	/**
 	 * Get the distance between cells using their UTM northing and easting
 	 * @param from The cell starting from

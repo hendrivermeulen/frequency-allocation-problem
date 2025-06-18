@@ -41,11 +41,11 @@ should be as far apart as possible. This will also be limited to only look at th
 frequencies and without frequencies to avoid looking at the entire graph and only look at the k nearest which can 
 mak conflicts. 
 
-The complexity is reduced by the use of priority queues to O(n^2logn + n^2logn\*2k) 
+The complexity is reduced by the use of priority queues to O(n^2logn + nlogn\*2k) 
 but is still bounded by O(n^2logn) to calculate the edges of the graph and add them 
-to a queue (preprocessing), but the coloring only takes O(n^2logn\*2k) which is to go through 
-each edge (O(n^2)) and at most look at k closet neighbours, logn to get k closets neighbours from priority queue,
-with frequencies or k neighbours without frequencies. This will not always lead the most optimal solution 
+to a queue (preprocessing), but the coloring only takes O(nlogn\*2k) which is to go through 
+each vertex (O(n)) and at most look at k closet neighbours, logn to get k closets neighbours from priority queue,
+with frequencies or k neighbours without frequencies (O(2k)). This will not always lead the most optimal solution 
 but will be even faster and close to the most optimal solution.
 
 This algorithm is similar to the DSatur algorithm (Michail et al.,2020)[^5] which uses saturation 
@@ -65,24 +65,24 @@ the quality of each algorithm.
 ## Results
 The following results where gathered:
 - The BruteForce algorithm took too long to process and no time was taken.
-- The Greedy algorithm took on average 18ms to process and a quality of 98.05%.
-- The Priority Queue algorithm took on average 12ms to process and a quality of 98.14%.
+- The Greedy algorithm took on average 3ms to process and a quality of 98.05%.
+- The Priority Queue algorithm took on average 5ms to process and a quality of 98.32%.
 
 ## Discussion
 The BruteForce algorithm with its complexity of O(n!) took too long to process showing that it is largely more
 expensive to compute. However, the greedy algorithm shown to be quick and accurate enough even though
-it will not give the most optimal answer. The Priority Queue algorithm is shown to be even quicker and 
-provides even slightly better quality.
+it will not give the most optimal answer. The Priority Queue algorithm is shown to be almost as quick and 
+provides even slightly better quality. 
 
 ## Conclusion
 The BruteForce algorithm shown to be impractical and not viable to get the most optimal solution. However,
-the Priority Queue algorithm is shown to be a better choice over the Greedy algorithm. Ultimately the 
+the Priority Queue algorithm is shown to be a better quality over the Greedy algorithm. Ultimately the 
 problem is still bounded by calculating all the edges of each vertex bounding the complexity to O(n^2).
 
 ## Future Work
 1. The Priority Queue can be optimized to give better results by using Backtracking, as done by Bhowmick & Hovland (2008)[^6],
 to swap assignments around to give more optimal results, but this might lead to more time complexity. 
-It can also be investigated to not use priority queues but to only start at the smallest edge and grow walk from 
+It can also be investigated to not use priority queues but to only start at the smallest edge and walk from 
 their using the smallest edge from the last colored vertex to reduce to only O(n^2) complexity.
 
 2. Add a visualization of the algorithm at work to show how it makes choices.

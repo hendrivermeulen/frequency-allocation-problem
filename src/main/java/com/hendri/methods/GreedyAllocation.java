@@ -50,8 +50,11 @@ public class GreedyAllocation
 					// get a possible registration
 					RegisteredCell possibleReg = RegisteredCell.builder()
 							.frequency(frequency).cell(cell).build();
+					// create solution
+					Set<RegisteredCell> possibleSolution = new HashSet<>(registeredCells);
+					possibleSolution.add(possibleReg);
 					// get quality
-					double quality = Graph.getGraphQualityMeasure(Set.of(possibleReg)).getQuality();
+					double quality = Graph.getGraphQualityMeasure(possibleSolution).getQuality();
 					// take as solution if better
 					if(quality > bestQuality){
 						bestQuality = quality;

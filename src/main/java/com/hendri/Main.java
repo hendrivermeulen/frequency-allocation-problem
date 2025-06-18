@@ -37,6 +37,7 @@ public class Main
 	 * Frequency allocation start
 	 */
 	public static final int FREQ_ALLOC_START = 110;
+	public static final int NUM_TESTS = 10;
 
 	/**
 	 * Get list of Frequency allocations
@@ -148,9 +149,9 @@ public class Main
 				}
 
 				// prepare
-				long startTime;
-				long endTime;
-				Set<RegisteredCell> registeredCells;
+				long startTime = -1;
+				long endTime = -1;
+				Set<RegisteredCell> registeredCells = null;
 
 				/*System.out.println("Running BruteForce...");
 				startTime = System.nanoTime();
@@ -160,23 +161,36 @@ public class Main
 				System.out.println("BruteForce quality: " + Graph.getGraphQualityMeasure(registeredCells).getQuality());
 				System.out.println("BruteForce time: " + (endTime-startTime) + " ns");*/
 
+				// warm up cache
+				for (int i = 0; i < NUM_TESTS; i++) {
+					PriorityQueueAllocation.priorityAllocate(cells,
+							freqAllocations);
+				}
+
 				// Run Greedy
 				System.out.println("Running Greedy...");
-				startTime = System.nanoTime();
-				registeredCells = GreedyAllocation.greedilyAllocate(cells,
-						freqAllocations);
-				endTime = System.nanoTime();
+				long average = 0;
+				for (int i = 0; i < NUM_TESTS; i++) {
+					Graph.clearCache();
+					startTime = System.currentTimeMillis();
+					registeredCells = GreedyAllocation.greedilyAllocate(cells, freqAllocations);
+					endTime = System.currentTimeMillis();
+					average += endTime-startTime;
+				}
 				System.out.println("Greedy quality: " + Graph.getGraphQualityMeasure(registeredCells).getQuality());
-				System.out.println("Greedy time: " + (endTime-startTime) + " ns");
+				System.out.println("Greedy time: " + (average/ NUM_TESTS) + " ms");
 
 				// Run priority
 				System.out.println("Running Priority...");
-				startTime = System.nanoTime();
-				registeredCells = PriorityQueueAllocation.priorityAllocate(cells,
-						freqAllocations);
-				endTime = System.nanoTime();
+				for (int i = 0; i < NUM_TESTS; i++) {
+					startTime = System.currentTimeMillis();
+					registeredCells = PriorityQueueAllocation.priorityAllocate(cells,
+							freqAllocations);
+					endTime = System.currentTimeMillis();
+						average += endTime-startTime;
+				}
 				System.out.println("Priority quality: " + Graph.getGraphQualityMeasure(registeredCells).getQuality());
-				System.out.println("Priority time: " + (endTime-startTime) + " ns");
+				System.out.println("Priority time: " + (average/ NUM_TESTS) + " ms");
 
 				// Add solution to graph
 				for (RegisteredCell registeredCell : registeredCells) {

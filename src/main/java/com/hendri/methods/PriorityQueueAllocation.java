@@ -59,8 +59,8 @@ public class PriorityQueueAllocation
 
 		// perform greedy allocation
 		HashMap<Cell, Integer> allocations = new HashMap<>();
-		while (!edgePriorities.isEmpty()){
-			Edge edge = edgePriorities.poll();
+		while (allocations.size() != cells.size()){
+			Edge edge = Objects.requireNonNull(edgePriorities.poll());
 			allocations.computeIfAbsent(edge.getFrom(), cell -> allocate(cell,
 					allCellPriorities.get(cell), allocations, frequencies));
 			allocations.computeIfAbsent(edge.getTo(), cell -> allocate(cell,
@@ -81,7 +81,7 @@ public class PriorityQueueAllocation
 		Set<Integer> leftoverAllocations = new HashSet<>(freqAllocations);
 
 		// only if there are the initial frequencies have been allocated
-		if(allocations.values().size() >= freqAllocations.size()) {
+		if(allocations.values().size() != freqAllocations.size()) {
 			// only while there are neighbours left and we have frequencies left to allocation
 			// and that we have not run out of k nearest neighbours to visit
 			while (!cellPriorities.isEmpty() && !leftoverAllocations.isEmpty()
